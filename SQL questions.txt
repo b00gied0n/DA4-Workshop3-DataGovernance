@@ -1,0 +1,694 @@
+
+/* 
+CORNDEL SQL Workshops - SQL Worksheet 
+
+GUIDE TO WORKFLOW
+     DEMO: Your instructor will introduce the concept and you can code along with them.
+  OBSERVE: Things to consider about the queries and results.  
+CHALLENGE: A challenge that may require multiple queries for you to answer the question.
+
+
+CONTENTS
+-- SECTION 1  - Extracting data from a table		
+-- SECTION 1B - Extracting unique data from a table
+-- SECTION 2  - Filtering data with a WHERE clause
+-- SECTION 2B - Filtering data with multiple conditions & Handling missing or NULL values
+-- SECTION 3  - Sorting data with ORDER BY
+-- SECTION 4  - Aggregate functions and GROUP BY
+-- SECTION 5  - Combine GROUP BY with other commands
+-- SECTION 6  - Combining tables with JOINs
+-- SECTION 7  - Using JOINs with other commands
+-- SECTION 8  - Using sub-queries
+-- SECTION 9  - Creating and removing tables
+
+-- SECTION 10 - Stretch Questions 
+
+*/
+
+
+
+-- -------------------------------------------
+-- SECTION 1 - Extracting data from a table --
+-- -------------------------------------------
+
+-- DEMO: QUESTION 01
+-- Use the SELECT command to extract all columns from the customer table.
+-- OBSERVE: What are the columns in customer? What data types do they contain?
+
+
+-- DEMO: QUESTION 02
+-- Extract the first name and last name columns from the customer table.
+-- OBSERVE: How many records are returned? What data types do the the columns have?
+
+
+-- DEMO: QUESTION 03
+-- Use the LIMIT command to return only the first 10 records from customer.
+
+
+-- DEMO: QUESTION 04
+-- Use the COUNT command to count all records from the customer table.
+-- OBSERVE: How many records does the table customer have?
+ 
+
+-- QUESTION 05
+-- Use the SELECT command to extract all columns from the payment table.
+-- OBSERVE: What are the columns in payment? What data types do they contain? How many records?
+
+
+-- QUESTION 06
+-- Extract the columns customer_id, amount, and payment_date from the payment table.
+-- OBSERVE: What is the data type for each column?
+
+
+-- QUESTION 07
+-- Choose any table you haven't looked at yet - Extract all of the data from that table.
+-- OBSERVE: What are its columns? What data types do the columns contain? How many records are in the table? 
+
+
+-- QUESTION 08
+-- Use SELECT to view the column names for both the *city* and *country* tables. You will need two queries.
+-- OBSERVE: Do the City & Country table have any columns with the same name?
+-- CHALLENGE: Explore other tables using SELECT. Find two other tables that both share a column with the same name.
+
+
+-- KEYWORDS COVERED SO FAR:
+-- SELECT, FROM, LIMIT, COUNT
+-- Extract all COLUMNS using * 
+-- Extract specific COLUMNS using their names
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+-- ---------------------------------------------------
+-- SECTION 1B - Extracting unique data from a table --
+-- ---------------------------------------------------
+
+-- DEMO: QUESTION 09
+-- Extract the first name column from customer.
+
+
+-- DEMO: QUESTION 10 
+-- Use the DISTINCT command to extract all the distinct first names from customer.
+
+
+-- DEMO: QUESTION 11 
+-- How many distinct first names are there in customer? 
+
+
+-- QUESTION 12
+-- Use the SELECT command to extract all the distinct values for *amount* in the payment table.
+
+
+-- QUESTION 13
+-- Use COUNT function to count the distinct values for *amount* in the payment table.
+-- OBSERVE: How many distinct values for *amount* exist in the payment table?
+
+
+-- QUESTION 14
+-- How many different store_ids exist in the customer table?
+
+
+-- QUESTION 15
+-- How many different store_ids exist in the store table?
+-- OBSERVE: Do all the possible store_ids in the database exist in the customer table?
+
+
+-- QUESTION 16
+-- How many different cities are there in the address table?
+-- How many different cities are there in the city table?
+ 
+
+-- QUESTION 17
+-- CHALLENGE: How many cities might be duplicated in the address table?
+
+
+-- KEYWORDS COVERED SO FAR:
+-- SELECT, FROM, LIMIT, COUNT, DISTINCT
+-- Extract all COLUMNS using * 
+-- Extract specific COLUMNS using their name
+
+----------------------------------------------------------------------------------------------------------------------
+
+-- -------------------------------------------------
+-- SECTION 2 - filtering data with a WHERE clause --
+-- -------------------------------------------------
+
+-- DEMO: QUESTION 18 
+-- Select all the columns in the customer table for records where store_id is 1.
+
+
+-- DEMO: QUESTION 19 
+-- Select all the columns in the customer table for records where the first name is Jenny.
+
+
+-- DEMO: QUESTION 20 
+-- How many records are there in customer where store_id is 1?
+
+
+-- QUESTION 21
+-- Select all the data from payment where the customer_id is 357.
+-- OBSERVE: How many rows do you get?
+
+
+-- QUESTION 22
+-- Use the SELECT command to only extract the *address* and *postal_code* columns, where the city_id is 300
+-- OBSERVE: How many rows do you get?
+
+
+-- QUESTION 23
+-- Select all the addresses where the city is Aurora. How many rows do you get?
+-- OBSERVE: How do we identify which *city_id* corresponds to a specific city name?
+
+
+-- QUESTION 24
+-- The customers of store 1 share how many different first names between them?
+
+
+-- QUESTION 25
+-- How many records in payment with amount greater than 5?
+
+
+-- QUESTION 26
+-- How many records in payment where the date is later than April 2007?
+
+
+-- SECTION 2 COMMANDS COVERED SO FAR:
+-- WHERE
+
+-- OPERATORS COVERED SO FAR:
+-- Equals to = 
+-- Greater than >
+-- Greater than, inclusive =>
+-- Less than < 
+-- Less than, inclusive =<
+
+-- -----------------------------------------------------------------------------------------------------
+
+-----------------------------------------------------
+-- SECTION 2B - Filtering data with a WHERE clause --
+--              & multiple conditions              --
+--              Handling missing or NULL values    --
+-----------------------------------------------------
+
+-- DEMO: QUESTION 27 
+-- Select the first_name, last_name, store_id and address_id columns 
+-- from the customer table where *store_id* is 1 and *address_id* is bigger than 150.
+
+
+-- DEMO: QUESTION 28 
+-- Select data from customer where first name is either Terry or Mary.
+
+
+-- DEMO: QUESTION 29 
+-- How many customers have the name Terry or Mary?
+
+
+-- DEMO: QUESTION 30 
+-- Select data from payment where amount is between 5 and 8.99, inclusive.
+
+
+-- DEMO: QUESTION 31 
+-- Select data from customer where the name contains the string 'AR'.
+
+
+-- DEMO: QUESTION 32 
+-- Select the customer_id column from customer where first name is missing.
+
+
+-- DEMO: QUESTION 33 
+-- Select the customer_id column from customer where first name is not missing.
+
+
+-- QUESTION 34
+-- How many customers called Jamie are registered with store 1? What about store 2?
+
+
+-- QUESTION 35
+-- How many films have length between 60 and 90 minutes (inclusive)?
+
+
+-- QUESTION 36
+-- How many customers in the database with a first name beginning with M?
+
+
+-- QUESTION 37
+-- How many customers in the database with a first name in the list,
+-- ('MOLLY','JENNY','JIMMY','LENNY')?
+
+
+-- QUESTION 38
+-- Find all the names in the database with a first name ending with Y?
+-- OBSERVE: How many records are returned from your query?
+
+
+-- QUESTION 39
+-- How many records in address have null values for the column address?
+-- How many records in address have null values for the column address2?
+
+ 
+-- QUESTION 40
+-- CHALLENGE: Are there more countries which begin with A or that end with N?
+-- CHALLENGE: Are there any countries that both begin with A and end with N?
+-- This will require multiple queries.
+
+ 
+-- QUESTION 41
+-- Are there more cities with names containing B or names containing C?
+-- This will require multiple queries.
+
+
+-- QUESTION 42
+-- CHALLENGE: UPPER is a function that converts a column to upper case. 
+-- Complete question 41 again but use the UPPER function to avoid the need to distinguish between upper and lower case characters.
+
+
+-- COMMANDS COVERED SO FAR:
+-- WHERE, AND, OR, IN, BETWEEN, LIKE, iLIKE, NULL, NOT
+
+-- SECTION 2 COMMANDS COVERED SO FAR:
+-- WHERE, AND, OR
+
+-- OPERATORS COVERED SO FAR:
+-- Equal to a string:          		column = 'value'
+-- Equal to a number:          		column = 123
+-- Greater than:               		column > 123
+-- Greater than, inclusive:    		column >= 123
+-- Less than:                  		column < 123 
+-- Less than, inclusive:            column <= 123
+-- Betweem, inclusive:              column >= 1 and column <= 123
+-- Between, exclusive               column > 1 and column < 123 
+-- BETWEEN (inclusive):             column BETWEEN 1 AND 123
+-- LIKE (case-sensitive):           column LIKE 'A'
+-- LIKE with wildcards:				column LIKE 'A%'
+-- iLIKE (Case-insensitive):        column iLIKE 'a'
+-- iLIKE with Wildcards:			column iLIKE 'a%'
+-- IN (list)                        column in (1, 2, 3, 'a', 'b', 'c')
+-- NOT (Combined other operators):  column NOT = 'VALUE'
+-- ! Short for NOT:         		column != 'VALUE'
+-- IS NULL							Column IS NULL  
+
+-- -----------------------------------------------------------------------------------------------------
+
+-- --------------------------------------------------------
+-- SECTION 3 - Sorting data with ORDER BY                --
+-- --------------------------------------------------------
+
+-- DEMO: QUESTION 43 
+-- Use the ORDER BY command to sort customers alphabetically by last name. 
+-- OBSERVE: Which name is first alphabetically? Which is last?
+
+
+-- DEMO: QUESTION 44 
+-- Sort the records in payment from the largest amount to the least.
+
+
+-- DEMO: QUESTION 45 
+-- Output 1 record for the customer whose first name comes first alphabetically.
+
+
+-- QUESTION 46
+-- What are the first and last cities alphabetically?
+-- You will need two queries.
+
+
+-- QUESTION 47
+-- Output the countries which come first and last alphabetically.
+-- You will need two queries
+
+
+-- QUESTION 48
+-- Extract data for the top 15 films when ordered by their length, in descending order.
+-- Only output the film_id, title, and length columns.
+
+
+-- QUESTION 49
+-- First sort films by their length, in descending order.
+-- But also sort alphabetically by title, to break any ties.
+
+
+-- QUESTION 50
+-- Which is the biggest postal code in address? 
+-- Which is the smallest postal code in address?
+-- OBSERVE: they are numerical USA zip codes, which data type we are using... what problems does this cause?
+
+
+-- QUESTION 51
+-- Which is the longest film with a 'PG' rating?
+
+
+-- QUESTION 52
+-- What is the largest payment by a customer whose first name begins with Y?
+-- You will need multiple queries. 
+
+
+-- COMMANDS COVERED SO FAR:
+-- ORDER BY, DESC
+
+-- -----------------------------------------------------------------------------------------------------
+
+-- ----------------------------------------------
+-- SECTION 4 - aggregate functions and GROUP BY --
+-- ----------------------------------------------
+
+-- DEMO: QUESTION 53 
+-- What is the minimum, maximum, sum, and mean of amount in payment?
+
+
+-- DEMO: QUESTION 54 
+-- Use the MIN and MAX functions to find the first and last films alphabetically.
+
+
+-- DEMO: QUESTION 55 
+-- Create a single output which includes 
+-- the minimum, maximum, sum, and mean of amount in payment. 
+-- Use aliases to give each column a sensible name.
+
+
+-- QUESTION 56
+-- What is the minimum, maximum, sum, and mean of rental_duration in film?
+
+
+-- QUESTION 57
+-- Choose another sensible column from film.
+-- Create a single output which includes
+-- the minimum, maximum, sum, and mean of that column.
+-- Use aliases to give each column a sensible name.
+
+
+-- QUESTION 58
+-- Do PG films or PG-13 films tend to be longer?
+
+
+-- COMMANDS COVERED SO FAR:
+-- MIN, MAX, SUM, AVG
+
+-- -----------------------------------------------------------------------------------------------------
+
+-- DEMO: QUESTION 59 
+-- Aggregate the data in the customer table, by store_id. 
+-- Create a column with the number of records for each store_id.
+
+
+-- DEMO: QUESTION 60 
+-- Create a table summarising the average length of films. 
+-- Output one row for each distinct rating.
+
+
+-- DEMO: QUESTION 61 
+-- Aggregate the film table by release year and rating. 
+-- Create a column showing the total number of records for each combination. 
+-- Also create a column showing the first film alphabetically for each combination.
+
+
+-- QUESTION 62
+-- Aggregate the data in the film table, by rating.
+-- Create a column with the number of records for each rating.
+
+
+-- QUESTION 63
+-- Create a table summarising the average sales value.
+-- for each member of staff in the payment table.
+
+
+-- QUESTION 64
+-- Aggregate the payment table by staff_id and amount.
+-- Create a column showing the total number of records for each combination.
+
+
+-- QUESTION 65
+-- Create a table based on the customer table which shows
+-- the number of customers whose first name begins with each letter of the alphabet
+-- Each record in the output should correspond to a different letter.
+-- This should require using the SUBSTRING function.
+
+
+-- COMMANDS COVERED SO FAR:
+-- GROUP BY, MIN, MAX, SUM, AVG
+
+-- -----------------------------------------------------------------------------------------------------
+
+-- --------------------------------------------------
+-- SECTION 5 - combine GROUP BY with other commands --
+-- --------------------------------------------------
+
+-- DEMO: QUESTION 66 
+-- Which customer_id has made the most transaction/payments?
+
+
+-- DEMO: QUESTION 67 
+-- How much did that customer spend in total?
+
+
+-- DEMO: QUESTION 68 
+-- List the customers who have spent more than 190 in total.
+
+
+-- QUESTION 69
+-- Create a table which lists each customer_id,
+-- alongside their maximum payment in the payment table.
+-- Order this list according to those maximum payments.
+
+
+-- QUESTION 70
+-- Which customer_id has the highest average transaction amount?
+
+
+-- QUESTION 71
+-- List the customer_ids with an average transaction amount more than 5.
+-- How many records are returned?
+
+
+-- QUESTION 72
+-- Which film rating tends to have the longest films? The most expensive?
+
+
+-- QUESTION 73
+-- Find all the duplicated city_ids in address.
+
+
+-- QUESTION 74
+-- Which customer has rented films at the most different price-points?
+-- How many price-points?
+
+
+-- QUESTION 75
+-- What is the most common starting letter of all the films? Second most common?
+-- Each record in the output should correspond to a different letter.
+-- This should require using the SUBSTRING function.
+
+
+-- QUESTION 76
+-- Which rental_id accounts for the most sales? What is its name?
+-- This may require multiple steps
+
+
+-- COMMANDS COVERED SO FAR:
+-- ORDER BY, GROUP BY, HAVING
+
+-- -----------------------------------------------------------------------------------------------------
+
+-- -----------------------------------------
+-- SECTION 6 - combining tables with JOINs --
+-- -----------------------------------------
+
+-- DEMO: QUESTION 77 
+-- Join the address column from address onto the customer table.
+
+
+-- DEMO: QUESTION 78 
+-- Join the city column onto the customer table.
+
+
+-- DEMO: QUESTION 79 
+-- Join country onto the address table.
+
+
+-- QUESTION 80
+-- Join film name onto the inventory table.
+
+
+-- QUESTION 81
+-- Join film language onto the inventory table.
+-- You will need to use the *name* column from the language table.
+
+
+-- QUESTION 82
+-- Join together all the films and actors so that actors
+-- appear next to the films they acted in.
+-- You can use film_actor as your base table.
+
+
+-- QUESTION 83
+-- Find all the first names in the customer table,
+-- which are shared by actors in the actor table.
+-- This could be done using an INNER JOIN.
+
+
+-- COMMANDS COVERED SO FAR:
+-- LEFT JOIN, ON, INNER JOIN
+
+-- -----------------------------------------------------------------------------------------------------
+
+-- ---------------------------------------------
+-- SECTION 7 - using JOINs with other commands --
+-- ---------------------------------------------
+
+-- DEMO: QUESTION 84 
+-- Select the first and last names of all customers 
+-- and the total sales amount for each (three columns in total). 
+-- What is the name of the customer who spent the most?
+
+
+-- QUESTION 85
+-- Select the first and last names of all customers from store 1
+-- and the total sales amount for each (three columns in total).
+-- What is the name of the customer who spent the most?
+
+
+-- QUESTION 86
+-- What are the names of the customers with more than 190 sales?
+
+
+-- QUESTION 87
+-- Find the average amount in the payment table for customers from each city.
+-- Use a single query to return the city name and average amount as two columns.
+-- This will require 4 tables and 3 joins
+
+
+-- QUESTION 88
+-- What is the name of the actor who appears in the most PG films?
+
+
+-- QUESTION 89
+-- What is the name of the actor who appears in the longest films, on average?
+
+
+-- COMMANDS COVERED SO FAR:
+-- JOINS, WHERE, GROUP BY, ORDER BY, HAVING
+
+-- -----------------------------------------------------------------------------------------------------
+
+-- -------------------------------
+-- SECTION 8 - using sub-queries --
+-- -------------------------------
+
+-- DEMO: QUESTION 90 
+-- Using a sub-query, return the average number of transactions per customer.
+
+
+-- QUESTION 91
+-- Using a sub-query, return the average number of actors featured per film.
+
+
+-- QUESTION 92
+-- Using a sub-query, return the average number of actors featured per film.
+-- Show the results for each different film rating (using GROUP BY).
+
+
+-- COMMANDS COVERED SO FAR:
+-- Sub-queries
+
+-- -----------------------------------------------------------------------------------------------------
+
+-- ------------------------------------------
+-- SECTION 9 - creating and removing tables --
+-- ------------------------------------------
+
+-- DEMO: QUESTION 93 
+-- Create a table named *your name*.
+
+
+-- DEMO: QUESTION 94 
+-- Remove your new table.
+
+
+-- DEMO: QUESTION 95 
+-- Create a table named *your name* with numeric, text, and date columns.
+
+
+-- DEMO: QUESTION 96 
+-- Create a table named *your name* containing a duplicate of the customer table.
+
+
+-- DEMO: QUESTION 97 
+-- Create a table named *your name* containing only customers with names beginning with M.
+
+
+-- QUESTION 98
+-- Create a table named *your name* with columns in the following formats:
+-- DECIMAL(8,2), INT, VARCHAR(10), CHAR(10), TIMESTAMP
+
+
+-- QUESTION 99
+-- Create a table containing customers named in the list ('MOLLY','JENNY','JIMMY','LENNY')?
+
+
+-- QUESTION 100
+-- Create a new table based on the actor table
+-- which contains the first_name and last_name columns only.
+
+
+-- COMMANDS COVERED SO FAR:
+-- CREATE TABLE, DROP TABLE
+
+-- -----------------------------------------------------------------------------------------------------
+
+-- --------------------------------------------------
+-- SECTION 10 - more commands and practice questions --
+-- --------------------------------------------------
+
+-- STRETCH I
+-- What is the average film length by genre?
+
+
+-- STRETCH II
+-- What is the most profitable genre (action, animation, comedy, etc.)?
+
+
+-- STRETCH III
+-- How many different genres has the average customer rented?
+
+
+-- STRETCH IV
+-- Who is the most profitable actor?
+
+
+-- STRETCH V
+-- What is the longest duration between two rentals by the same customer?
+
+
+-- STRETCH VI
+-- Create a copy of the payment table with a new column that splits payments into low/medium/high.
+    -- Payments less than 3 should be classified as 'low'
+    -- Payments between 3 and 4 should be classified as 'medium'
+    -- Payments greater than 4 should be classified as 'high'
+    -- Try googling 'SQL CASE STATEMENTS'
+
+
+-- STRETCH VII
+-- Create a copy of the customer table, with a new 'username' column
+    -- that takes the first three letter of the first name and the first three letter of the last name.
+    -- e.g. KARL SEAL becomes KARSEA
+    -- Try googling 'PostgreSQL concatenate strings'
+
+
+-- STRETCH VIII
+-- Which month sees the most sales? Which day of the month? Which weekday?
+    -- Try googling 'get month from timestamp PostgreSQL'
+
+
+-- STRETCH IX
+-- Create a summary table of film sales, and add a rank column based on which film has the most.
+
+
+-- STRETCH X
+-- What is the most profitable combination of two actors, when they appear in the same film?
+
+
+-- STRETCH XI
+-- You have to recommend a film to Karl Seal. Which film would you recommend and why?
+    -- There is no one correct answer for this
+    -- You may need multiple queries to reach an answer that you are happy with
+
+
+-- COMMANDS COVERED SO FAR:
+-- CASE, WHEN, ELSE, SUBSTRING, EXTRACT
